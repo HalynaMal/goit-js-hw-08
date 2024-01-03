@@ -110,6 +110,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
+
 //=========перевіряємо цільовий елемент події click===========================//
 function selectImage(event) {
   if (event.target.nodeName !== "BUTTON") {
@@ -117,5 +119,6 @@ function selectImage(event) {
   }
 
   const selectedImage = event.target.dataset.color; // користувач клікнув на кнопку і ми маємо доступ до її атрибутів
+}
 }
 //==================================================//
