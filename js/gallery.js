@@ -118,7 +118,7 @@ function selectImage(event) {
     return; // користувач клікнув між кнопками
   }
 
-  const selectedImage = event.target.dataset.color; // користувач клікнув на кнопку і ми маємо доступ до її атрибутів
+ // const selectedImage = event.target.dataset.color; // користувач клікнув на кнопку і ми маємо доступ до її атрибутів
 }
-}
+
 //==================================================//
