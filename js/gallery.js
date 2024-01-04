@@ -68,14 +68,8 @@ const images = [
   function galleryTemp(img) {
     return `<li class="gallery-item">
     <a class="gallery-link" href="${img.original}" onclick="event.preventDefault()">
-      <img
-        class="gallery-image"
-        src="${img.preview}"
-        data-source="${img.original}"
-        alt="${img.description}"
-      />
-    </a>
-  </li>`
+      <img class="gallery-image" src="${img.preview}" data-source="${img.original}"
+       alt="${img.description}"/></a></li>`
   }
 
   function renderGallery() {
