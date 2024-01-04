@@ -82,43 +82,8 @@ const images = [
     const markup = images.map(galleryTemp).join('');
     galleryList.insertAdjacentHTML('beforeend', markup);
   }
-  renderGallery();
-
-galleryList.addEventListener("click", function (event) {
-    console.log(event.target);
-})
+renderGallery();
   
-
-//=============================//
-document.addEventListener("DOMContentLoaded", function() {
-  // Отримати елементи
-  const imageLink = document.querySelector('.gallery-link');
-  const largeImage = document.querySelector('.gallery-image');
-
-  // Додати подію кліку на посилання
-  imageLink.addEventListener("click", function(event) {
-    event.preventDefault();
-
-    // Отримати шлях до великого зображення з data-атрибуту
-    const source = largeImage.getAttribute("data-source");
-
-    // Встановити посилання на велике зображення в href
-    imageLink.href = source;
-
-    // Додати атрибут src на елемент img
-    largeImage.src = source;
-  });
-});
-
-
-
-//=========перевіряємо цільовий елемент події click===========================//
-function selectImage(event) {
-  if (event.target.nodeName !== "BUTTON") {
-    return; // користувач клікнув між кнопками
-  }
-
- // const selectedImage = event.target.dataset.color; // користувач клікнув на кнопку і ми маємо доступ до її атрибутів
-}
-
 //==================================================//
+
+  
