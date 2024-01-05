@@ -83,7 +83,7 @@ const images = [
   galleryList.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(event) {
-  if (event.target.nodeName != 'IMG') {
+  if (event.target.nodeName !== 'IMG') {
     return;
   }
   const largeImageSrc = event.target.dataset.source;
