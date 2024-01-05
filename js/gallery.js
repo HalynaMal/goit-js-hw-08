@@ -63,7 +63,7 @@ const images = [
       description: "Lighthouse Coast Sea",
     },
   ];
-
+ // ==== створення галереї === //
   const galleryList = document.querySelector('.gallery');
   function galleryTemp(img) {
     return `<li class="gallery-item">
@@ -76,8 +76,35 @@ const images = [
     const markup = images.map(galleryTemp).join('');
     galleryList.insertAdjacentHTML('beforeend', markup);
   }
-renderGallery();
-  
-//==================================================//
+ 
+//==== обробка кліка  ===//
+
+  renderGallery(images);
+  galleryList.addEventListener('click', onGalleryItemClick);
+
+function onGalleryItemClick(event) {
+  if (event.target.nodeName != 'IMG') {
+    return;
+  }
+  const largeImageSrc = event.target.dataset.source;
+  const largeAlt = event.target.alt;
+  const instance = basicLightbox.create(`<img src="${largeImageSrc}" class="largeImage" alt="${largeAlt}">`, {
+    onShow: (instance) => {
+      const onKeyUp = (event) => {
+        if (event.code === 'Escape') {
+          instance.close();
+        }
+      };
+      window.addEventListener('keyup', onKeyUp);
+      instance.__onKeyUp = onKeyUp;
+    },
+      
+    onClose: (instance) => {
+      window.removeEventListener('keyup', instance.__onKeyUp);
+    }
+  });
+      instance.show();
+}
+ 
 
   
