@@ -98,7 +98,7 @@ function onGalleryItemClick(event) {
         }
       };
       window.addEventListener('keyup', onKeyUp);
-   //   instance.__onKeyUp = onKeyUp;
+      instance.__onKeyUp = onKeyUp;
     },
       
     onClose: (instance) => {
