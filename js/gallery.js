@@ -67,7 +67,7 @@ const images = [
   const galleryList = document.querySelector('.gallery');
   function galleryTemp(img) {
     return `<li class="gallery-item">
-    <a class="gallery-link" href="${img.original}" onclick="event.preventDefault()">
+    <a class="gallery-link" href="${img.original}">
       <img class="gallery-image" src="${img.preview}" data-source="${img.original}"
        alt="${img.description}"/></a></li>`
   }
@@ -77,15 +77,17 @@ const images = [
     galleryList.insertAdjacentHTML('beforeend', markup);
   }
  
-//==== обробка кліка  ===//
+//==== обробка кліка  ===// 
 
   renderGallery(images);
   galleryList.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(event) {
-  if (event.target.nodeName !== 'IMG') {
+    event.preventDefault();
+    if (event.target.nodeName !== 'IMG') {
     return;
   }
+ 
   const largeImageSrc = event.target.dataset.source;
   const largeAlt = event.target.alt;
   const instance = basicLightbox.create(`<img src="${largeImageSrc}" class="largeImage" alt="${largeAlt}">`, {
@@ -96,7 +98,7 @@ function onGalleryItemClick(event) {
         }
       };
       window.addEventListener('keyup', onKeyUp);
-      instance.__onKeyUp = onKeyUp;
+   //   instance.__onKeyUp = onKeyUp;
     },
       
     onClose: (instance) => {
