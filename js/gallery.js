@@ -91,22 +91,23 @@ function onGalleryItemClick(event) {
   const largeImageSrc = event.target.dataset.source;
   const largeAlt = event.target.alt;
   const instance = basicLightbox.create(`<img src="${largeImageSrc}" class="largeImage" alt="${largeAlt}">`, {
-    onShow: (instance) => {
-      const onKeyUp = (event) => {
-        if (event.code === 'Escape') {
-          instance.close();
-        }
-      };
-      window.addEventListener('keyup', onKeyUp);
-      instance.__onKeyUp = onKeyUp;
+   
+    onShow: instance => {
+      document.addEventListener('keydown', closeModal);
     },
-      
-    onClose: (instance) => {
-      window.removeEventListener('keyup', instance.__onKeyUp);
-    }
-  });
-      instance.show();
-}
- 
 
+    onClose: instance => {
+      document.removeEventListener('keydown', closeModal);
+    },
+  },
+  );
+
+  function closeModal(e) {
+     if (e.code === 'Escape') instance.close();
+  }
+   
+  instance.show();
+};
+
+  
   
